@@ -1,8 +1,8 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace Snake.Validator.Service.Payload;
+namespace Snake.Validator.Service.Response;
 
-public class Snake
+public class SnakeConfig
 {
     [JsonPropertyName("x")]
     public int X { get; set; }

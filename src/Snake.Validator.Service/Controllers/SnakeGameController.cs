@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Snake.Validator.Service.Payload;
+using Snake.Validator.Service.Response;
 using Snake.Validator.Service.Services;
 
 
@@ -11,33 +12,31 @@ namespace Snake.Validator.Service.Controllers
     {
         private readonly ILogger<SnakeGameController> _logger;
         private readonly INewGame _newGame;
+        private readonly IValidator _validator;
 
-        public SnakeGameController(ILogger<SnakeGameController> logger, INewGame newGame)
+        public SnakeGameController(ILogger<SnakeGameController> logger, INewGame newGame, IValidator validator)
         {
             _logger = logger;
             _newGame = newGame;
+            _validator = validator;
         }
 
         [HttpPost]
         [ActionName("Validate")]
-        public ActionResult<State> ValidateState([FromBody] State gameState)
+        public ActionResult<StateConfig> ValidateState([FromBody] ValidateConfig data)
         {
-            Console.WriteLine(gameState);
-            var x = gameState.GameID;
-            var y = gameState.Fruit.X;
-            Console.WriteLine(y);
-            Console.WriteLine(x);
-            return Ok(gameState);
+            var response = _validator.MoveValidation(data);           
+            return response;
         }   
         
         [HttpGet]
         [ActionName("New")]
-        public ActionResult<State> ValidateState(
+        public ActionResult<StateConfig> GetNewGame(
             [FromQuery(Name = "w")] int w, 
             [FromQuery(Name = "h")] int h)
         {
             var response = _newGame.StartGame(w, h);
-            return Ok(response);
+            return response;
         }
     }
 }

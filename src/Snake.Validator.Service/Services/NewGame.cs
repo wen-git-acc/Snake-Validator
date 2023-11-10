@@ -1,4 +1,5 @@
-﻿using Snake.Validator.Service.Payload;
+﻿using Microsoft.AspNetCore.Mvc;
+using Snake.Validator.Service.Response;
 
 namespace Snake.Validator.Service.Services;
 
@@ -10,19 +11,18 @@ public class NewGame : INewGame
     {
         _generalHelper = generalHelper;
     }
-    public State StartGame(int width, int height)
+    public ActionResult<StateConfig> StartGame(int width, int height)
     {
         var newGameId = GenerateRandomGameId();
         var newFruitPosition = _generalHelper.GenerateFruitPosition(width, height);
-        var newSnakeInformation = new Payload.Snake()
+        var newSnakeInformation = new SnakeConfig()
         {
             VelX = 1,
             VelY = 0,
             X = 0,
             Y = 0,
         };
-
-        return new State()
+        StateConfig newConfig = new StateConfig()
         {
             GameID = newGameId,
             Width = width,
@@ -31,6 +31,8 @@ public class NewGame : INewGame
             Fruit = newFruitPosition,
             Snake = newSnakeInformation
         };
+        
+        return new OkObjectResult(newConfig);
     }
 
     private string GenerateRandomGameId()

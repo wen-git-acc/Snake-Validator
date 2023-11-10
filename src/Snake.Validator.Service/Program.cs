@@ -11,6 +11,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddSingleton<INewGame, NewGame>();
 builder.Services.AddSingleton<IGeneralHelper, GeneralHelper>();
+builder.Services.AddSingleton<IValidator, Validator>();
 
 var app = builder.Build();
 

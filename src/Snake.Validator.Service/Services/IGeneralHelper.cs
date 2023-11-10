@@ -1,8 +1,8 @@
-﻿using Snake.Validator.Service.Payload;
+﻿using Snake.Validator.Service.Response;
 
 namespace Snake.Validator.Service.Services;
 
 public interface IGeneralHelper
 {
-    public Fruit GenerateFruitPosition(int width, int height);
+    public FruitConfig GenerateFruitPosition(int width, int height);
 }

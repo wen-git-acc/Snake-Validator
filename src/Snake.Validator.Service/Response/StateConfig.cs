@@ -1,8 +1,8 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace Snake.Validator.Service.Payload;
+namespace Snake.Validator.Service.Response;
 
-public class State
+public class StateConfig
 {
     [JsonPropertyName("gameId")]
     public string GameID { get; set; }
@@ -17,8 +17,8 @@ public class State
     public int Score { get; set; }
 
     [JsonPropertyName("fruit")]
-    public Fruit Fruit { get; set; }
+    public FruitConfig Fruit { get; set; }
 
     [JsonPropertyName("snake")]
-    public Snake Snake { get; set; }
+    public SnakeConfig Snake { get; set; }
 }

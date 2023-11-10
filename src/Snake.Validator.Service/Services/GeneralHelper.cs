@@ -1,10 +1,10 @@
-﻿using Snake.Validator.Service.Payload;
+﻿using Snake.Validator.Service.Response;
 
 namespace Snake.Validator.Service.Services;
 
 public class GeneralHelper : IGeneralHelper
 {
-    public Fruit GenerateFruitPosition(int width, int height)
+    public FruitConfig GenerateFruitPosition(int width, int height)
     {
         var random = new Random();
         var fruitPositionX = 0;
@@ -18,7 +18,7 @@ public class GeneralHelper : IGeneralHelper
             isStartingPosition = (fruitPositionX == 0 && fruitPositionY == 0);
         }
 
-        return new Fruit()
+        return new FruitConfig()
         {
             X = fruitPositionX,
             Y = fruitPositionY,
