@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34031.279
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Snake.Validator.Service.Tests", "Snake.Validator.Service.Tests\Snake.Validator.Service.Tests.csproj", "{A864D6A0-3404-4BBA-AC20-AD5E3F975B38}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Snake.Validator.Service", "Snake.Validator.Service\Snake.Validator.Service.csproj", "{442A3B93-EB1B-4999-87D9-60AAA34BB011}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A864D6A0-3404-4BBA-AC20-AD5E3F975B38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A864D6A0-3404-4BBA-AC20-AD5E3F975B38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A864D6A0-3404-4BBA-AC20-AD5E3F975B38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A864D6A0-3404-4BBA-AC20-AD5E3F975B38}.Release|Any CPU.Build.0 = Release|Any CPU
+		{442A3B93-EB1B-4999-87D9-60AAA34BB011}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{442A3B93-EB1B-4999-87D9-60AAA34BB011}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{442A3B93-EB1B-4999-87D9-60AAA34BB011}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{442A3B93-EB1B-4999-87D9-60AAA34BB011}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {507AF55E-7E42-49CF-A777-C604801B65EF}
+	EndGlobalSection
+EndGlobal
