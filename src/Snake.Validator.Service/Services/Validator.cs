@@ -17,6 +17,7 @@ public class Validator : IValidator
     public ActionResult<StateConfig> MoveValidation(ValidateConfig data)
     {
         var move = IsMoveValid(data.Width, data.Height, data.Snake, data.Ticks);
+
         if (!move.isValid)
         {
             var responseMessage = move.description == _loseByPosition ? MessageConfig.GameOverPosition : MessageConfig.GameOverDirection;
