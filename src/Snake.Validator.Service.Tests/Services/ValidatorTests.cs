@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.DependencyInjection;
 using Moq;
 using Snake.Validator.Service.Messages;
 using Snake.Validator.Service.Payload;
@@ -49,7 +48,6 @@ public class ValidatorTests
         var newState = (StateConfig)okResult.Value;
 
         //Assert
-        Assert.IsType<ActionResult<StateConfig>>(actionResult);
         Assert.IsType<OkObjectResult>(okResult);
         Assert.IsType<StateConfig>(newState);
         Assert.Equal(expectedStatusCode, okResult.StatusCode);
@@ -79,7 +77,6 @@ public class ValidatorTests
         var objectResult = (ObjectResult)actionResult.Result;
 
         //Assert
-        Assert.IsType<ActionResult<StateConfig>>(actionResult);
         Assert.IsType<ObjectResult>(objectResult);
         Assert.Equal(expectedStatusCode, objectResult.StatusCode);
         Assert.Equal(expectedMessage, objectResult.Value);
@@ -100,7 +97,6 @@ public class ValidatorTests
         var objectResult = (ObjectResult)actionResult.Result;
 
         //Assert
-        Assert.IsType<ActionResult<StateConfig>>(actionResult);
         Assert.IsType<ObjectResult>(objectResult);
         Assert.Equal(expectedStatusCode, objectResult.StatusCode);
         Assert.Equal(expectedMessage, objectResult.Value);
@@ -121,7 +117,6 @@ public class ValidatorTests
         var objectResult = (ObjectResult)actionResult.Result;
 
         //Assert
-        Assert.IsType<ActionResult<StateConfig>>(actionResult);
         Assert.IsType<ObjectResult>(objectResult);
         Assert.Equal(expectedStatusCode, objectResult.StatusCode);
         Assert.Equal(expectedMessage, objectResult.Value);

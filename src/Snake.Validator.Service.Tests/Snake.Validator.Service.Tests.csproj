@@ -28,4 +28,8 @@
     <ProjectReference Include="..\Snake.Validator.Service\Snake.Validator.Service.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+  </ItemGroup>
+
 </Project>

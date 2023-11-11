@@ -1,7 +1,4 @@
-﻿using System;
-using System.Security.Cryptography;
-using FakeItEasy;
-using Moq;
+﻿using FakeItEasy;
 using Snake.Validator.Service.Response;
 using Snake.Validator.Service.Services;
 using Xunit;

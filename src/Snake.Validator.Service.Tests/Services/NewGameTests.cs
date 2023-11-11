@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Moq;
-using Newtonsoft.Json.Bson;
 using Snake.Validator.Service.Response;
 using Snake.Validator.Service.Services;
 using Xunit;
@@ -45,7 +44,6 @@ public class NewGameTests
         var newState = (StateConfig) okResult.Value;
 
         //Assert
-        Assert.IsType<ActionResult<StateConfig>>(actionResult);
         Assert.IsType<OkObjectResult>(okResult);
         Assert.IsType<StateConfig>(newState);
         Assert.Equal(expectedStatusCode, okResult.StatusCode);
