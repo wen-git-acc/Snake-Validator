@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Snake.Validator.Service.Payload;
 using Snake.Validator.Service.Response;
 using Snake.Validator.Service.Services;
@@ -23,20 +24,36 @@ namespace Snake.Validator.Service.Controllers
 
         [HttpPost]
         [ActionName("Validate")]
-        public ActionResult<StateConfig> ValidateState([FromBody] ValidateConfig data)
+        public ActionResult<StateConfig> ValidateState([FromBody] ValidateConfig state)
         {
-            var response = _validator.MoveValidation(data);           
-            return response;
+            try
+            {
+                var response = _validator.VerifyData(state);
+                return response;
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500,ex.Message);
+            }
+       
         }   
         
         [HttpGet]
         [ActionName("New")]
         public ActionResult<StateConfig> GetNewGame(
-            [FromQuery(Name = "w")] int w, 
-            [FromQuery(Name = "h")] int h)
+            [FromQuery(Name = "w"), BindRequired] int width, 
+            [FromQuery(Name = "h"), BindRequired] int height)
         {
-            var response = _newGame.StartGame(w, h);
-            return response;
+            try
+            {
+                var response = _newGame.StartGame(width, height);
+                return response;
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+         
         }
     }
 }

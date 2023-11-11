@@ -24,4 +24,5 @@ public class GeneralHelper : IGeneralHelper
             Y = fruitPositionY,
         };
     }
+
 }

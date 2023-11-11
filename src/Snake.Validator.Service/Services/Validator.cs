@@ -14,9 +14,16 @@ public class Validator : IValidator
     {
         _generalHelper = generalHelper;
     }
-    public ActionResult<StateConfig> MoveValidation(ValidateConfig data)
+    public ActionResult<StateConfig> VerifyData(ValidateConfig state)
     {
-        var move = IsMoveValid(data.Width, data.Height, data.Snake, data.Ticks);
+        var isFruitEaten = IsFruitFound(state.Fruit, state.Snake);
+
+        if (!isFruitEaten)
+        {
+            return new ObjectResult(MessageConfig.FruitNotFound) { StatusCode = 404 };
+        }
+
+        var move = IsMoveValid(state.Width, state.Height, state.Snake, state.Ticks);
 
         if (!move.isValid)
         {
@@ -24,10 +31,24 @@ public class Validator : IValidator
             return new ObjectResult(responseMessage) { StatusCode = 418 };
         }
 
+        var newFruitPosition = _generalHelper.GenerateFruitPosition(state.Width, state.Height);
+      
+        var newState = new StateConfig()
+        {
+            GameID = state.GameID,
+            Width = state.Width,
+            Height = state.Height,
+            Score = state.Score + 1,
+            Fruit = newFruitPosition,
+            Snake = state.Snake,
+        };
 
+        return new OkObjectResult(newState);
+    }
 
-
-        return new OkResult();
+    public bool IsFruitFound(FruitConfig fruit, SnakeConfig snake)
+    {
+        return ((fruit.X == snake.X) && (fruit.Y == snake.Y));
     }
 
     public (bool isValid, string? description) IsMoveValid(int width, int height, SnakeConfig snakeInfo, List<VelocityTicks> ticks)
