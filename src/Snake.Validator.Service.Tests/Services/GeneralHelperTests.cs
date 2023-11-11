@@ -1,4 +1,5 @@
 ﻿using FakeItEasy;
+using Snake.Validator.Service.Messages;
 using Snake.Validator.Service.Response;
 using Snake.Validator.Service.Services;
 using Xunit;
@@ -30,5 +31,18 @@ public class GeneralHelperTests
         Assert.Equal(expectedPosition, fruitPos.Y);
         A.CallTo(() => mockRandomizer.Next(A<int>._))
             .MustHaveHappenedANumberOfTimesMatching(count => count == 2);
+    }
+
+    [Fact]
+    public void GenerateFruitPositionTests_ReturnException()
+    {
+        // Arrange
+        var service = GetService();
+
+        // Act
+        var exception = Assert.Throws<ArgumentOutOfRangeException>(() => service.GenerateFruitPosition(0, 0));
+
+        // Assert
+        Assert.Equal(MessageConfig.GenerateFruitPosException, exception.Message);
     }
 }

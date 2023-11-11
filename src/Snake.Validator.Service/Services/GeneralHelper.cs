@@ -1,4 +1,5 @@
-﻿using Snake.Validator.Service.Response;
+﻿using Snake.Validator.Service.Messages;
+using Snake.Validator.Service.Response;
 
 namespace Snake.Validator.Service.Services;
 
@@ -13,7 +14,7 @@ public class GeneralHelper : IGeneralHelper
 
         if (width == 0 || height == 0)
         {
-            throw new ArgumentException("Width and height given should not be zero");
+            throw new ArgumentOutOfRangeException("", MessageConfig.GenerateFruitPosException);
         }
 
         while (isStartingPosition)
