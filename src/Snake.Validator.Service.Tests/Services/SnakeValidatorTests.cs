@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Runtime.CompilerServices;
+using Microsoft.AspNetCore.Mvc;
 using Moq;
 using Snake.Validator.Service.Messages;
 using Snake.Validator.Service.Payload;
@@ -8,7 +9,7 @@ using Xunit;
 
 namespace Snake.Validator.Service.Tests.Services;
 
-public class ValidatorTests
+public class SnakeValidatorTests
 {
     public ISnakeValidator GetService()
     {

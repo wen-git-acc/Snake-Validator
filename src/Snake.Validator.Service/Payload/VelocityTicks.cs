@@ -1,12 +1,14 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace Snake.Validator.Service.Payload;
-
-public class VelocityTicks
+namespace Snake.Validator.Service.Payload
 {
-    [JsonPropertyName("velX")]
-    public int VelX { get; set; }
+    public class VelocityTicks
+    {
+        [JsonPropertyName("velX")]
+        public int VelX { get; set; }
 
-    [JsonPropertyName("velY")]
-    public int VelY { get; set; }
+        [JsonPropertyName("velY")]
+        public int VelY { get; set; }
+    }
 }
+

@@ -9,10 +9,12 @@ public class NewGame : INewGame
     private readonly IGeneralHelper _generalHelper;
     public int minimumWidth = 5;
     public int minimumHeight = 5;
+
     public NewGame(IGeneralHelper generalHelper)
     {
         _generalHelper = generalHelper;
     }
+
     public ActionResult<StateConfig> StartGame(int width, int height)
     {
         var IsSizeCorrect = IsWidthHeightValid(width, height);
@@ -31,6 +33,7 @@ public class NewGame : INewGame
     {
         return width >= minimumWidth && height >= minimumHeight;
     }
+
     private StateConfig GenerateNewGameState(int width, int height)
     {
         var newGameId = GenerateRandomGameId();

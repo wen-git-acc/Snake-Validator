@@ -11,6 +11,11 @@ public class GeneralHelper : IGeneralHelper
         var fruitPositionY = 0;
         var isStartingPosition = true;
 
+        if (width == 0 || height == 0)
+        {
+            throw new ArgumentException("Width and height given should not be zero");
+        }
+
         while (isStartingPosition)
         {
             fruitPositionX = random.Next(width + 1);
@@ -24,5 +29,4 @@ public class GeneralHelper : IGeneralHelper
             Y = fruitPositionY,
         };
     }
-
 }

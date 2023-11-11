@@ -12,7 +12,6 @@ public class GeneralHelperTests
         return new GeneralHelper();
     }
 
-
     [Theory]
     [InlineData(200,300,10)]
     public void GenerateFruitPositionTests_ReturnFruitConfigType(int width, int height, int expectedPosition)
