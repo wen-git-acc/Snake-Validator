@@ -24,12 +24,12 @@ namespace Snake.Validator.Service.Controllers
 
         [HttpPost]
         [ActionName("Validate")]
-        public ActionResult<StateConfig> ValidateState([FromBody] ValidateConfig state)
+        public async Task<ActionResult<StateConfig>> ValidateState([FromBody] ValidateConfig state)
         {
             try
             {
                 var response = _validator.VerifyData(state);
-                return response;
+                return await Task.FromResult(response);
             }
             catch (Exception ex)
             {
@@ -40,14 +40,14 @@ namespace Snake.Validator.Service.Controllers
         
         [HttpGet]
         [ActionName("New")]
-        public ActionResult<StateConfig> GetNewGame(
+        public async Task<ActionResult<StateConfig>> GetNewGame(
             [FromQuery(Name = "w"), BindRequired] int width, 
             [FromQuery(Name = "h"), BindRequired] int height)
         {
             try
             {
                 var response = _newGame.StartGame(width, height);
-                return response;
+                return await Task.FromResult(response);
             }
             catch (Exception ex)
             {
