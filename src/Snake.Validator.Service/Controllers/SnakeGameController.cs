@@ -13,9 +13,9 @@ namespace Snake.Validator.Service.Controllers
     {
         private readonly ILogger<SnakeGameController> _logger;
         private readonly INewGame _newGame;
-        private readonly IValidator _validator;
+        private readonly ISnakeValidator _validator;
 
-        public SnakeGameController(ILogger<SnakeGameController> logger, INewGame newGame, IValidator validator)
+        public SnakeGameController(ILogger<SnakeGameController> logger, INewGame newGame, ISnakeValidator validator)
         {
             _logger = logger;
             _newGame = newGame;

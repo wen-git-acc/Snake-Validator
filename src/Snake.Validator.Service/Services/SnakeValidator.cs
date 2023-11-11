@@ -5,12 +5,12 @@ using Snake.Validator.Service.Response;
 
 namespace Snake.Validator.Service.Services;
 
-public class Validator : IValidator
+public class SnakeValidator : ISnakeValidator
 {
     private readonly IGeneralHelper _generalHelper;
     private readonly string _loseByPosition = "out";
     private readonly string _loseByDirection = "direction";
-    public Validator(IGeneralHelper generalHelper)
+    public SnakeValidator(IGeneralHelper generalHelper)
     {
         _generalHelper = generalHelper;
     }
@@ -46,12 +46,12 @@ public class Validator : IValidator
         return new OkObjectResult(newState);
     }
 
-    public bool IsFruitFound(FruitConfig fruit, SnakeConfig snake)
+    private bool IsFruitFound(FruitConfig fruit, SnakeConfig snake)
     {
         return ((fruit.X == snake.X) && (fruit.Y == snake.Y));
     }
 
-    public (bool isValid, string? description) IsMoveValid(int width, int height, SnakeConfig snakeInfo, List<VelocityTicks> ticks)
+    private (bool isValid, string? description) IsMoveValid(int width, int height, SnakeConfig snakeInfo, List<VelocityTicks> ticks)
     {
         var currentPosX = snakeInfo.X;
         var currentPosY = snakeInfo.Y;

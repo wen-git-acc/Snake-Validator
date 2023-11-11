@@ -37,6 +37,7 @@ public class NewGameTests
         var expectedSnakeVelY = 0;
         var expectedSnakeX = 0;
         var expectedSnakeY = 0;
+        var expectedStatusCode = 200;
 
         //Act
         var actionResult = service.StartGame(width, height);
@@ -47,6 +48,7 @@ public class NewGameTests
         Assert.IsType<ActionResult<StateConfig>>(actionResult);
         Assert.IsType<OkObjectResult>(okResult);
         Assert.IsType<StateConfig>(newState);
+        Assert.Equal(expectedStatusCode, okResult.StatusCode);
         Assert.Equal(expectedWidth, newState.Width);
         Assert.Equal(expectedHeight, newState.Height);
         Assert.Equal(expectedScore, newState.Score);
