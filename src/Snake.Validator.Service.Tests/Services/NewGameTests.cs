@@ -55,4 +55,21 @@ public class NewGameTests
         Assert.Equal(expectedSnakeX,newState.Snake.X);
         Assert.Equal(expectedSnakeY,newState.Snake.Y);
     }
+
+    [Theory]
+    [InlineData(4, 5,400)]
+    [InlineData(5, 3,400)]
+    [InlineData(3, 3,400)]
+    public void StartGameTests_WithInvalidSizeData_ReturnCorrectResponse(int width, int height, int expectedStatusCode)
+    {
+        //Arrange
+        var service = GetService();
+
+        //Act
+        var actionResult = service.StartGame(width, height);
+        var result = (ObjectResult)actionResult.Result;
+
+        //Assert
+        Assert.Equal(expectedStatusCode, result.StatusCode);
+    }
 }

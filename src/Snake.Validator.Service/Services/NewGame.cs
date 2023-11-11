@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Snake.Validator.Service.Messages;
 using Snake.Validator.Service.Response;
 
 namespace Snake.Validator.Service.Services;
@@ -6,18 +7,30 @@ namespace Snake.Validator.Service.Services;
 public class NewGame : INewGame
 {
     private readonly IGeneralHelper _generalHelper;
-
+    public int minimumWidth = 5;
+    public int minimumHeight = 5;
     public NewGame(IGeneralHelper generalHelper)
     {
         _generalHelper = generalHelper;
     }
     public ActionResult<StateConfig> StartGame(int width, int height)
     {
+        var IsSizeCorrect = IsWidthHeightValid(width, height);
+
+        if (!IsSizeCorrect)
+        {
+            return new ObjectResult(MessageConfig.IncorrectStartingSize) { StatusCode = 400 };
+        }
+
         var newConfig = GenerateNewGameState(width, height);
         
         return new OkObjectResult(newConfig);
     }
 
+    private bool IsWidthHeightValid(int width, int height)
+    {
+        return width >= minimumWidth && height >= minimumHeight;
+    }
     private StateConfig GenerateNewGameState(int width, int height)
     {
         var newGameId = GenerateRandomGameId();
