@@ -4,9 +4,9 @@ namespace Snake.Validator.Service.Services;
 
 public class GeneralHelper : IGeneralHelper
 {
-    public FruitConfig GenerateFruitPosition(int width, int height)
+    public FruitConfig GenerateFruitPosition(int width, int height, Random? random=null)
     {
-        var random = new Random();
+        random ??= new Random();
         var fruitPositionX = 0;
         var fruitPositionY = 0;
         var isStartingPosition = true;

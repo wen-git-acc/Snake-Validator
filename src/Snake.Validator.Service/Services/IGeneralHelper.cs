@@ -4,5 +4,5 @@ namespace Snake.Validator.Service.Services;
 
 public interface IGeneralHelper
 {
-    public FruitConfig GenerateFruitPosition(int width, int height);
+    public FruitConfig GenerateFruitPosition(int width, int height, Random? random = null);
 }

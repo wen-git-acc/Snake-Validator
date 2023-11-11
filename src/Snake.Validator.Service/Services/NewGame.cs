@@ -13,6 +13,13 @@ public class NewGame : INewGame
     }
     public ActionResult<StateConfig> StartGame(int width, int height)
     {
+        var newConfig = GenerateNewGameState(width, height);
+        
+        return new OkObjectResult(newConfig);
+    }
+
+    private StateConfig GenerateNewGameState(int width, int height)
+    {
         var newGameId = GenerateRandomGameId();
         var newFruitPosition = _generalHelper.GenerateFruitPosition(width, height);
         var newSnakeInformation = new SnakeConfig()
@@ -31,8 +38,8 @@ public class NewGame : INewGame
             Fruit = newFruitPosition,
             Snake = newSnakeInformation
         };
-        
-        return new OkObjectResult(newConfig);
+
+        return newConfig;
     }
 
     private string GenerateRandomGameId()
